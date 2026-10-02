@@ -1,0 +1,8 @@
+.panel { background: var(--surface); border: 1px solid var(--bordure); border-radius: var(--rayon); box-shadow: var(--ombre); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 1px solid transparent; border-radius: 10px; padding: 10px 15px; font-weight: 650; font-size: 14px; transition: .2s; }
+.btn-primary { background: var(--primaire-fonce); color: white; } .btn-primary:hover { background: #5558e8; transform: translateY(-1px); }
+.btn-secondary { background: var(--surface-2); color: var(--texte); border-color: var(--bordure); } .btn-secondary:hover { background: var(--surface-hover); }
+.input { width: 100%; background: #0c1424; border: 1px solid var(--bordure); color: var(--texte); border-radius: 10px; padding: 11px 13px; outline: none; }
+.input:focus { border-color: var(--primaire); box-shadow: 0 0 0 3px rgb(129 140 248 / 14%); }
+.field-label { display: block; color: var(--texte-secondaire); font-size: 13px; margin-bottom: 7px; font-weight: 600; }
+.stat-card { padding: 22px; } .muted { color: var(--texte-secondaire); } .error-text { color: var(--danger); }

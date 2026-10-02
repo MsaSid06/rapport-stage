@@ -1,0 +1,2 @@
+import { AlertCircle, RefreshCw } from 'lucide-react'
+export default function EtatErreur({ message, reessayer }: { message: string; reessayer?: () => void }) { return <div className="panel p-6"><div className="flex items-start gap-3"><AlertCircle className="mt-1 text-rose-400"/><div className="flex-1"><h3 className="font-semibold">Une erreur est survenue</h3><p className="mt-1 text-sm muted">{message}</p>{reessayer && <button className="btn btn-secondary mt-4" onClick={reessayer}><RefreshCw size={15}/>Réessayer</button>}</div></div></div> }

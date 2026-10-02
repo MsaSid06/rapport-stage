@@ -1,0 +1,11 @@
+import { useMemo, useState } from 'react'
+import { Plus } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { utiliserRapports } from '../../hooks/utiliserRapports'
+import IndicateurChargement from '../../composants/interface/IndicateurChargement'
+import EtatErreur from '../../composants/interface/EtatErreur'
+import EtatVide from '../../composants/interface/EtatVide'
+import TableauRapports from '../../composants/rapports/TableauRapports'
+import FiltresRapports from '../../composants/rapports/FiltresRapports'
+import Bouton from '../../composants/interface/Bouton'
+export default function ListeRapports() { const { rapports, chargement, erreur, actualiser } = utiliserRapports(); const [recherche, setRecherche] = useState(''); const [date, setDate] = useState(''); const naviguer = useNavigate(); const filtres = useMemo(() => rapports.filter((r) => (!date || r.date === date) && `${r.objectif} ${r.activites} ${r.bilan ?? ''}`.toLowerCase().includes(recherche.toLowerCase())), [rapports, recherche, date]); return <div className="space-y-6"><div className="flex flex-wrap items-center justify-between gap-4"><div><h1 className="text-3xl font-bold tracking-tight">Rapports</h1><p className="mt-2 text-sm muted">Consultez et gérez vos comptes rendus de stage.</p></div><Bouton onClick={() => naviguer('/rapports/nouveau')}><Plus size={17}/>Nouveau rapport</Bouton></div><FiltresRapports recherche={recherche} changerRecherche={setRecherche} date={date} changerDate={setDate}/>{chargement ? <IndicateurChargement/> : erreur ? <EtatErreur message={erreur} reessayer={() => void actualiser()}/> : filtres.length ? <><p className="text-sm muted">{filtres.length} rapport(s)</p><TableauRapports rapports={filtres}/></> : <EtatVide titre="Aucun résultat" description="Modifiez vos filtres ou créez un rapport."/>}</div> }

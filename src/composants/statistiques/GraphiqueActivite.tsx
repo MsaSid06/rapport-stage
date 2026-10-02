@@ -1,0 +1,2 @@
+import type { Rapport } from '../../types/rapport'
+export default function GraphiqueActivite({ rapports }: { rapports: Rapport[] }) { const total = rapports.reduce((n, r) => n + (r.activites?.trim().split(/\s+/).filter(Boolean).length ?? 0), 0); const moyenne = rapports.length ? Math.round(total / rapports.length) : 0; return <div className="panel p-6"><h3 className="font-semibold">Densité des comptes rendus</h3><p className="mt-3 text-3xl font-bold">{moyenne} <span className="text-sm font-normal muted">mots par rapport en moyenne</span></p></div> }

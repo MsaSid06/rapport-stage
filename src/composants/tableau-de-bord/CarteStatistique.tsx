@@ -1,0 +1,2 @@
+import type { ReactNode } from 'react'
+export default function CarteStatistique({ titre, valeur, detail, icone }: { titre: string; valeur: string | number; detail: string; icone: ReactNode }) { return <div className="panel stat-card"><div className="mb-5 flex items-center justify-between"><span className="text-sm muted">{titre}</span><span className="grid h-10 w-10 place-items-center rounded-xl bg-indigo-400/10 text-indigo-300">{icone}</span></div><div className="text-3xl font-bold tracking-tight">{valeur}</div><p className="mt-2 text-xs muted">{detail}</p></div> }

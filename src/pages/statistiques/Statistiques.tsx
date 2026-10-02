@@ -1,0 +1,11 @@
+import { CalendarDays, FileText, BookOpen, Type } from 'lucide-react'
+import { utiliserRapports } from '../../hooks/utiliserRapports'
+import { utiliserStatistiques } from '../../hooks/utiliserStatistiques'
+import IndicateurChargement from '../../composants/interface/IndicateurChargement'
+import EtatErreur from '../../composants/interface/EtatErreur'
+import CarteStatistique from '../../composants/tableau-de-bord/CarteStatistique'
+import GraphiqueRapports from '../../composants/tableau-de-bord/GraphiqueRapports'
+import CarteProgression from '../../composants/tableau-de-bord/CarteProgression'
+import GraphiqueActivite from '../../composants/statistiques/GraphiqueActivite'
+import JoursManquants from '../../composants/statistiques/JoursManquants'
+export default function Statistiques() { const { rapports, chargement, erreur, actualiser } = utiliserRapports(); const s = utiliserStatistiques(rapports); if (chargement) return <IndicateurChargement/>; if (erreur) return <EtatErreur message={erreur} reessayer={() => void actualiser()}/>; return <div className="space-y-7"><div><h1 className="text-3xl font-bold tracking-tight">Statistiques</h1><p className="mt-2 text-sm muted">Analyse de la couverture et de la progression du stage.</p></div><div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4"><CarteStatistique titre="Rapports" valeur={s.total} detail="Rapports enregistrés" icone={<FileText size={18}/>} /><CarteStatistique titre="Jours couverts" valeur={s.joursCouverts} detail="Jours de stage documentés" icone={<BookOpen size={18}/>} /><CarteStatistique titre="Premier jour" valeur={s.premierJour ?? '—'} detail="Jour de stage minimal" icone={<CalendarDays size={18}/>} /><CarteStatistique titre="Mots moyens" valeur={s.moyenneMotsActivites} detail="Dans les activités décrites" icone={<Type size={18}/>} /></div><div className="grid gap-5 xl:grid-cols-2"><GraphiqueRapports donnees={s.mensuel}/><CarteProgression jour={s.dernierJour ?? 0}/></div><GraphiqueActivite rapports={rapports}/><JoursManquants jours={s.joursManquants}/><div className="panel grid gap-4 p-6 sm:grid-cols-2"><div><p className="text-sm muted">Première date de rapport</p><p className="mt-2 font-semibold">{s.premiereDate ?? '—'}</p></div><div><p className="text-sm muted">Dernière date de rapport</p><p className="mt-2 font-semibold">{s.derniereDate ?? '—'}</p></div></div></div> }

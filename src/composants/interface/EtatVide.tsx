@@ -1,0 +1,2 @@
+import { FileText } from 'lucide-react'
+export default function EtatVide({ titre = 'Aucun rapport', description = 'Créez votre premier rapport pour commencer.' }: { titre?: string; description?: string }) { return <div className="panel py-14 text-center"><FileText size={30} className="mx-auto mb-3 muted"/><h3 className="font-semibold">{titre}</h3><p className="mt-2 text-sm muted">{description}</p></div> }

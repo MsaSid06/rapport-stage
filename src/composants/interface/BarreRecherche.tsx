@@ -1,0 +1,2 @@
+import { Search } from 'lucide-react'
+export default function BarreRecherche({ valeur, changer, placeholder = 'Rechercher...' }: { valeur: string; changer: (v: string) => void; placeholder?: string }) { return <label className="relative block w-full max-w-sm"><Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 muted"/><input className="input pl-9" value={valeur} onChange={(e) => changer(e.target.value)} placeholder={placeholder}/></label> }

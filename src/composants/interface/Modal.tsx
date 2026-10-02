@@ -1,0 +1,2 @@
+import type { ReactNode } from 'react'
+export default function Modal({ titre, enfants, fermer }: { titre: string; enfants: ReactNode; fermer: () => void }) { return <div className="fixed inset-0 z-50 grid place-items-center bg-black/60 p-4" onMouseDown={fermer}><section className="panel w-full max-w-lg p-6" onMouseDown={(e) => e.stopPropagation()}><div className="mb-4 flex items-center justify-between"><h2 className="text-lg font-semibold">{titre}</h2><button className="muted" onClick={fermer} aria-label="Fermer">✕</button></div>{enfants}</section></div> }

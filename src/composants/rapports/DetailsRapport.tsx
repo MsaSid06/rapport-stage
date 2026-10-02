@@ -1,0 +1,4 @@
+import type { Rapport } from '../../types/rapport'
+import { formaterDate } from '../../utilitaires/formaterDate'
+const champs = [['activites', 'Activités réalisées'], ['difficultes', 'Difficultés rencontrées'], ['solutions', 'Solutions apportées'], ['apprentissages', 'Apprentissages'], ['bilan', 'Bilan de la journée'], ['demain', 'Prévisions pour demain']] as const
+export default function DetailsRapport({ rapport }: { rapport: Rapport }) { return <div className="space-y-5"><div className="panel p-6"><p className="text-sm muted">{formaterDate(rapport.date)} · Jour de stage {rapport.jour_stage}</p><h2 className="mt-3 text-2xl font-bold tracking-tight">{rapport.objectif}</h2></div>{champs.map(([champ, titre]) => <section key={champ} className="panel p-6"><h3 className="mb-3 font-semibold">{titre}</h3><p className="whitespace-pre-wrap text-sm leading-7 muted">{rapport[champ] || 'Aucune information renseignée.'}</p></section>)}</div> }

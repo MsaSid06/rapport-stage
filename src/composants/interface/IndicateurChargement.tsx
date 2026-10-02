@@ -1,0 +1,1 @@
+export default function IndicateurChargement({ texte = 'Chargement...' }: { texte?: string }) { return <div className="flex items-center justify-center gap-3 py-12 muted"><span className="h-5 w-5 animate-spin rounded-full border-2 border-indigo-400 border-t-transparent" />{texte}</div> }

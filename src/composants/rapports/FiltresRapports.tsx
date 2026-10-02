@@ -1,0 +1,2 @@
+import Champ from '../interface/Champ'
+export default function FiltresRapports({ recherche, changerRecherche, date, changerDate }: { recherche: string; changerRecherche: (v: string) => void; date: string; changerDate: (v: string) => void }) { return <div className="grid gap-3 sm:grid-cols-2"><Champ label="Rechercher dans les rapports" value={recherche} onChange={(e) => changerRecherche(e.target.value)} placeholder="Objectif, activités…"/><Champ label="Filtrer par date" type="date" value={date} onChange={(e) => changerDate(e.target.value)}/></div> }
